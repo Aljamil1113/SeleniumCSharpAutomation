@@ -35,27 +35,35 @@ namespace SampSelenium
             //IWebElement element = driver.FindElement(By.Id("testImage"));
             //IWebElement element = driver.FindElement(By.ClassName("testClass"));
 
-            IWebElement cssPathElement = driver.FindElement(By.CssSelector(cssPath));
-            IWebElement xPathElement = driver.FindElement(By.XPath(xPath));
-
-            if (cssPathElement.Displayed)
+            try
             {
-                GreenMessage("Yes! I can see the element, it's right there!!! (" + cssPathElement.Text + ").");
+                IWebElement cssPathElement = driver.FindElement(By.CssSelector(cssPath));
+
+                if (cssPathElement.Displayed)
+                {
+                    GreenMessage("Yes! I can see the element, it's right there!!! (" + cssPathElement.Text + ").");
+                }
             }
-            else
+            catch (Exception)
             {
                 RedMessage("Well, something went wrong, I couldn't see the element!");
             }
 
-            if (xPathElement.Displayed)
+
+            try
             {
-                GreenMessage("Yes! I can see the element, it's right there!!! (" + xPathElement.Text + ").");
+                IWebElement xPathElement = driver.FindElement(By.XPath(xPath));
+
+                if (xPathElement.Displayed)
+                {
+                    GreenMessage("Yes! I can see the element, it's right there!!! (" + xPathElement.Text + ").");
+                }
             }
-            else
+            catch (NoSuchElementException)
             {
                 RedMessage("Well, something went wrong, I couldn't see the element!");
             }
-
+            
             Thread.Sleep(5000);
 
             driver.Quit();

@@ -35,5 +35,10 @@ namespace AutoTestFramework
 
             }
         }
+
+        public static class AlertMessages
+        {
+            public static string SuccessfullLogin = "Succesful login!";
+        }
     }
 }

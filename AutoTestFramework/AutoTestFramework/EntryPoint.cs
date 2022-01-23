@@ -1,10 +1,16 @@
-﻿using AutoTestFramework.UIElements;
+﻿
+using NUnit.Framework;
+using OpenQA.Selenium;
 using System.Threading;
+using AutoTestFramework.UIElements;
 
 namespace AutoTestFramework
 {
+    [TestFixture]
     public class EntryPoint
     {
+        IAlert alert;
+
         static void Main()
         {
             //Menu menu = new Menu();
@@ -32,11 +38,36 @@ namespace AutoTestFramework
             ////****************************************************////
 
             ////************************ACTIONS********************////
-            Driver.driver.Navigate().GoToUrl("https://testing.todorvachev.com/");
+            //Driver.driver.Navigate().GoToUrl("https://testing.todorvachev.com/");
 
+            //NavigateTo.LoginFormThroughTheMenu();
+            //Actions.FillLoginForm(Config.Credentials.Valid.Username, Config.Credentials.Valid.Password, Config.Credentials.Valid.RepeatPassword);
+            ////**************************************************////
+        }
+
+        [SetUp]
+        public void Initialize()
+        {
+            Actions.InitializeDriver();
+        }
+
+        [Test]
+        public void ValidLogin()
+        {
             NavigateTo.LoginFormThroughTheMenu();
             Actions.FillLoginForm(Config.Credentials.Valid.Username, Config.Credentials.Valid.Password, Config.Credentials.Valid.RepeatPassword);
-            ////**************************************************////
+
+            alert = Driver.driver.SwitchTo().Alert();
+
+            Assert.AreEqual(Config.AlertMessages.SuccessfullLogin, alert.Text);
+
+            alert.Accept();
+        }
+
+        [TearDown]
+        public void CleanUp()
+        {
+            Driver.driver.Quit();
         }
     }
 }

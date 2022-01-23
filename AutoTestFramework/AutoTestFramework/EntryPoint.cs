@@ -59,6 +59,8 @@ namespace AutoTestFramework
 
             alert = Driver.driver.SwitchTo().Alert();
 
+            Thread.Sleep(1000);
+
             Assert.AreEqual(Config.AlertMessages.SuccessfullLogin, alert.Text);
 
             alert.Accept();

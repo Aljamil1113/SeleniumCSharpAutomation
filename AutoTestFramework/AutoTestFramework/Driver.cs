@@ -5,6 +5,6 @@ namespace AutoTestFramework
 {
     public class Driver
     {
-        public static IWebDriver driver = new ChromeDriver();
+        public static IWebDriver driver { get; set; }
     }
 }

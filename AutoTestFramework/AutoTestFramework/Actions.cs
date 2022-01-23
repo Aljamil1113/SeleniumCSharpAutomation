@@ -1,4 +1,5 @@
 ﻿using AutoTestFramework.UIElements;
+using OpenQA.Selenium.Chrome;
 
 namespace AutoTestFramework
 {
@@ -6,7 +7,9 @@ namespace AutoTestFramework
     {
         public static void InitializeDriver()
         {
-            Driver.driver.Navigate().GoToUrl(Config.BaseUrl);
+           Driver.driver = new ChromeDriver();
+
+           Driver.driver.Navigate().GoToUrl(Config.BaseUrl);
         }
 
 

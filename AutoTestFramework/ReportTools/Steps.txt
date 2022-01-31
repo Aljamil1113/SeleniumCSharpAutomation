@@ -1,0 +1,3 @@
+1. cd C:\SelfStudy\Projects\SeleniumAutomation\SeleniumCSharpAutomation\AutoTestFramework\ReportTools
+2. nunit3-console.exe "directory\BIN\DEBUG\PROJECT.exe"
+3. ReportUnit.exe "FILETEST.xml"

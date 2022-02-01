@@ -2,16 +2,16 @@
 using SeleniumExtras.PageObjects;
 
 
-namespace AutoTestFramework.UIElements
+namespace AutoTestFramework
 {
     public class UsernameFieldPost
     {
-        public UsernameFieldPost()
+        public UsernameFieldPost(IWebDriver driver)
         {
-            PageFactory.InitElements(Driver.driver, this);
+            PageFactory.InitElements(driver, this);
         }
 
         [FindsBy(How = How.CssSelector, Using = "#main-content > nav > div.mh-col-1-2.mh-post-nav-item.mh-post-nav-prev > a > p")]
-        public IWebElement LoginFormLink{ get; set; }
+        public IWebElement LoginFormLink { get; set; }
     }
 }

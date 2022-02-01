@@ -6,10 +6,10 @@ using AutoTestFramework.UIElements;
 
 namespace AutoTestFramework
 {
-    [TestFixture]
+    //[TestFixture]
     public class EntryPoint
     {
-        IAlert alert;
+       // IAlert alert;
 
         static void Main()
         {
@@ -45,31 +45,31 @@ namespace AutoTestFramework
             ////**************************************************////
         }
 
-        [SetUp]
-        public void Initialize()
-        {
-            Actions.InitializeDriver();
-        }
+        //[SetUp]
+        //public void Initialize()
+        //{
+        //    Actions.InitializeDriver(5);
+        //}
 
-        [Test]
-        public void ValidLogin()
-        {
-            NavigateTo.LoginFormThroughTheMenu();
-            Actions.FillLoginForm(Config.Credentials.Valid.Username, Config.Credentials.Valid.Password, Config.Credentials.Valid.RepeatPassword);
+        //[Test]
+        //public void ValidLogin(IWebDriver driver)
+        //{
+        //    NavigateTo.LoginFormThroughTheMenu(driver);
+        //    Actions.FillLoginForm(Config.Credentials.Valid.Username, Config.Credentials.Valid.Password, Config.Credentials.Valid.RepeatPassword, driver);
 
-            alert = Driver.driver.SwitchTo().Alert();
+        //    alert = driver.SwitchTo().Alert();
 
-            Thread.Sleep(1000);
+        //    Thread.Sleep(1000);
 
-            Assert.AreEqual(Config.AlertMessages.SuccessfullLogin, alert.Text);
+        //    Assert.AreEqual(Config.AlertMessages.SuccessfullLogin, alert.Text);
 
-            alert.Accept();
-        }
+        //    alert.Accept();
+        //}
 
-        [TearDown]
-        public void CleanUp()
-        {
-            Driver.driver.Quit();
-        }
+        //[TearDown]
+        //public void CleanUp(IWebDriver driver)
+        //{
+        //   driver.Quit();
+        //}
     }
 }

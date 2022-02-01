@@ -5,6 +5,10 @@ namespace AutoTestFramework
 {
     public class Driver
     {
-        public static IWebDriver driver { get; set; }
+        public IWebDriver driver { get; set; }
+
+        public void WaitForElementUpTo(int seconds = 5)
+        {
+        }
     }
 }

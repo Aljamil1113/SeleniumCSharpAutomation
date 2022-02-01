@@ -1,15 +1,16 @@
 ﻿
 using AutoTestFramework.UIElements;
+using OpenQA.Selenium;
 using System.Threading;
 
 namespace AutoTestFramework
 {
     public static class NavigateTo
     {
-        public static void LoginFormThroughTheMenu()
+        public static void LoginFormThroughTheMenu(IWebDriver driver)
         {
-            Menu menu = new Menu();
-            TestScenariosPage tsPage = new TestScenariosPage();
+            Menu menu = new Menu(driver);
+            TestScenariosPage tsPage = new TestScenariosPage(driver);
 
             menu.TestScenarios.Click();
             Thread.Sleep(500);
@@ -17,11 +18,11 @@ namespace AutoTestFramework
             Thread.Sleep(500);
         }
 
-        public static void LoginFormThroughThenPost()
+        public static void LoginFormThroughThenPost(IWebDriver driver)
         {
-            Menu menu = new Menu();
-            TestCasePage tcPage = new TestCasePage();
-            UsernameFieldPost ufPost = new UsernameFieldPost();
+            Menu menu = new Menu(driver);
+            TestCasePage tcPage = new TestCasePage(driver);
+            UsernameFieldPost ufPost = new UsernameFieldPost(driver);
 
             menu.TestCases.Click();
             Thread.Sleep(500);

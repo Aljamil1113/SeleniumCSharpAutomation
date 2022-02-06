@@ -44,6 +44,25 @@ namespace WindowAndTabs
             IWebElement searchBox1 = driver.FindElement(By.Name("q"));
             searchBox1.SendKeys("Selenium");
 
+            ((IJavaScriptExecutor)driver).ExecuteScript("window.open();");
+            ((IJavaScriptExecutor)driver).ExecuteScript("window.open();");
+            ((IJavaScriptExecutor)driver).ExecuteScript("window.open();");
+
+            List<string> handles1 = new List<string>();
+
+            driver.SwitchTo().Window(handles[1]);
+            driver.Navigate().GoToUrl("http://google.com");
+
+            for(int i = 0; i < handles1.Count; i++)
+            {
+                if(i!= 2)
+                {
+                    driver.SwitchTo().Window(handles[i]);
+
+                    driver.Close();
+                }
+            }
+
 
         }
     }

@@ -2,6 +2,7 @@
 using OpenQA.Selenium.Chrome;
 using System.Collections.Generic;
 using System;
+using System.IO;
 
 namespace PhantomJS
 {
@@ -58,6 +59,20 @@ namespace PhantomJS
 
                 extractedTitle.Add(titleElement.Text);
                 extractedContent.Add(contentElement.Text);
+            }
+
+            Directory.CreateDirectory(Directory.GetCurrentDirectory() + @"\ExtractedContent");
+            string path;
+            for (int i = 0; i < extractedTitle.Count; i++)
+            {
+                path = String.Format(Directory.GetCurrentDirectory() + @"\ExtractedContent\0{0} {1}.txt", i, extractedTitle[i]);
+
+                using (StreamWriter sw = File.CreateText(path))
+                {
+                    sw.WriteLine("TITLE: {0}", extractedTitle[i]);
+                    sw.WriteLine("CONTENT: ");
+                    sw.WriteLine(extractedContent[i]);
+                }
             }
         }
     }
